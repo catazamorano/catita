@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# La política de privacidad no aporta a búsquedas; ya va con noindex en su <meta>.
+Disallow: /privacidad.html
+
+Sitemap: https://catalinazamorano.cl/sitemap.xml

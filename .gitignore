@@ -1,0 +1,15 @@
+# El repo debe ser público para que GitHub Pages sea gratis.
+# Todo lo que esté acá NO se publica.
+
+# Notas de trabajo y configuración local
+.claude/
+_og-source.html
+
+# Las 3 direcciones de diseño que se compararon: no son parte del sitio
+prototipos/
+
+# Basura de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
