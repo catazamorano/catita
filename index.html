@@ -105,8 +105,8 @@
       <ul class="qlist">
         <li><a href="#cumplimiento">No me paga la pensión hace meses</a></li>
         <li><a href="#aumento">Lo que me pasa no alcanza, necesito aumentarla</a></li>
-        <li><a href="#salidas">Quiero viajar con mi hijo y el papá no autoriza</a></li>
-        <li><a href="#divorcio">Él no acepta el divorcio</a></li>
+        <li><a href="#faq-salidas">Quiero viajar con mi hijo y el papá no autoriza</a></li>
+        <li><a href="#faq-divorcio">Él no acepta el divorcio</a></li>
         <li><a href="#cuidado">¿Me pueden quitar a mis hijos?</a></li>
         <li><a href="#rdr">Quiero ver más a mis hijos</a></li>
       </ul>
@@ -146,7 +146,7 @@
       <div class="section__head">
         <p class="eyebrow">En qué te puedo ayudar</p>
         <h2 class="section__title">Derecho de familia, en lenguaje que se entiende</h2>
-        <p class="section__intro">Estas son las tres situaciones que más veo y en las que más me muevo. Abajo está todo lo demás — si lo tuyo es de familia, es probable que lo tome.</p>
+        <p class="section__intro">Estas son las tres situaciones que más veo y en las que más me muevo. Abajo está todo lo demás que tomo — y si no ves lo tuyo en la lista, pregúntame igual.</p>
       </div>
 
       <div class="svc">
@@ -183,6 +183,8 @@
           <li>Filiación y reconocimiento de paternidad</li>
           <li>Adopción</li>
           <li>Declaración de bien familiar</li>
+          <li>Posesión efectiva</li>
+          <li>Redacción de contratos</li>
         </ul>
       </div>
     </div>
@@ -226,7 +228,7 @@
       </div>
 
       <div class="faq">
-        <details>
+        <details id="faq-divorcio">
           <summary>¿Cuánto demora un divorcio?</summary>
           <div class="faq__a">
             <p>Depende de por dónde vaya. El divorcio de común acuerdo es el más rápido: exige que lleven al menos un año separados y, con todo en orden, suele resolverse en algunos meses.</p>
@@ -251,7 +253,7 @@
           </div>
         </details>
 
-        <details>
+        <details id="faq-salidas">
           <summary>Quiero viajar con mi hijo y el papá no autoriza</summary>
           <div class="faq__a">
             <p>Para salir de Chile con un hijo menor de edad necesitas la autorización del otro padre, normalmente ante notario.</p>
@@ -355,6 +357,8 @@
               <option>Compensación económica</option>
               <option>Filiación o reconocimiento de paternidad</option>
               <option>Adopción</option>
+              <option>Posesión efectiva</option>
+              <option>Redacción de contratos</option>
               <option>Otro / no sé cómo se llama</option>
             </select>
           </div>
@@ -419,6 +423,30 @@
 </a>
 
 <script>
+// Si el destino del enlace es una pregunta frecuente, ábrela: aterrizar en un
+// acordeón cerrado deja la respuesta escondida.
+(function () {
+  function abrirDestino() {
+    var h = location.hash;
+    if (!h || h.length < 2) return;
+    var el;
+    try { el = document.querySelector(h); } catch (e) { return; }
+    if (!el) return;
+    var d = el.tagName === 'DETAILS' ? el : el.closest('details');
+    if (d && !d.open) {
+      d.open = true;
+      // reposicionar: al expandirse cambia la altura y el scroll queda corrido
+      requestAnimationFrame(function () {
+        el.scrollIntoView({ block: 'start', behavior: 'auto' });
+      });
+    }
+  }
+  window.addEventListener('hashchange', abrirDestino);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', abrirDestino);
+  } else { abrirDestino(); }
+})();
+
 // Envío sin recargar. Sin JS el formulario igual funciona: postea a Web3Forms directamente.
 (function () {
   var form = document.getElementById('form');

@@ -65,6 +65,15 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 
 .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
 
+/* La barra superior es sticky y mide ~73px. Sin esto, todo destino de ancla
+   queda escondido debajo de ella al saltar. */
+[id] { scroll-margin-top: 5.5rem; }
+
+/* Al aterrizar desde "O dime cuál se parece a lo tuyo", que se vea qué se señaló. */
+.svc__item--lead:target { box-shadow: 0 0 0 2px var(--brass); }
+.chips li:target { border-color: var(--brass); background: rgba(201,154,91,.16); box-shadow: 0 0 0 1px var(--brass); }
+.faq details:target > summary { color: var(--plum); }
+
 .skip {
   position: absolute; left: -9999px; top: 0; z-index: 100;
   background: var(--ink); color: var(--paper); padding: .75rem 1.25rem; text-decoration: none;
