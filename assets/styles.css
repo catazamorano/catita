@@ -250,6 +250,15 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 }
 .contact__wa p { font-size: .95rem; line-height: 1.6; }
 
+/* Mapa de Google. Se carga en diferido: si nadie baja hasta acá, Google no
+   recibe nada. La política de privacidad declara esta carga. */
+.mapa {
+  position: relative; aspect-ratio: 4/3; margin-top: .25rem;
+  border: 1px solid var(--rule); border-radius: 2px; overflow: hidden;
+  background: var(--paper2);
+}
+.mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
 .form { display: flex; flex-direction: column; gap: 1.1rem; }
 .field { display: flex; flex-direction: column; gap: .4rem; }
 .field label { font-size: .82rem; font-weight: 700; color: var(--ink); letter-spacing: .02em; }
