@@ -13,3 +13,6 @@ prototipos/
 Thumbs.db
 desktop.ini
 *.log
+
+# Fotos originales sin recortar: no se publican
+.originales/
